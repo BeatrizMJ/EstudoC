@@ -119,6 +119,7 @@ CLASSES:
 -jogo.c (chama todas as outras classes (como um main)
 
 
+
 -tabuleiro.c (inicaliza, cria, manipula, e limpa a memoria de um tabueliro char)
 
 -personagem.c (inicaliza, cria, manipula um personagem em um tabuleiro)
@@ -156,6 +157,8 @@ MUDAR:
 EXTRAS:
 - se comer o 'o' pode comer os inimigos por um determinado tempo regredindo gradativamento a vida do inimigo
 - se comer outro item ganha vida
+
+
 
 
 
