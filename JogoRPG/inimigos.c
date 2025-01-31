@@ -3,7 +3,7 @@
 #include <stdio.h> //
 #include <time.h>
 
-Inimigo *inimigos = NULL;
+Inimigo *inimigos = NULL; // deveria ser constante, para os outros tambem
 
 void inicializar_inimigo(int x, int y) {
     Inimigo *novo = (Inimigo *)malloc(sizeof(Inimigo));
