@@ -139,8 +139,9 @@ ARRUMAR:
 - mover os inimigos
 - // incrementar pontos a cada pontinho que passar
 - nao permitir ser muito pequene ou muito grande o tabuleiro (minmo 10)  * sera que fazer o usuario escolher entre tamanhos fixos? FEITO
--- diminuir ou aumentar itens/inimigos conforme o tamanho do tabueliro
+- diminuir ou aumentar itens/inimigos conforme o tamanho do tabueliro
 - eliminar inimigo PROBLEMA
+- criar obstaculos
 
 
 MUDAR:
