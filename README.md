@@ -115,12 +115,18 @@ ORGANIZACAO DO MEU CODIGO:
 CLASSES:
 
 -main.c (iniciar e chamar a classe jogo.c que chama todas as outras classe)
+
 -jogo.c (chama todas as outras classes (como um main)
 
+
 -tabuleiro.c (inicaliza, cria, manipula, e limpa a memoria de um tabueliro char)
+
 -personagem.c (inicaliza, cria, manipula um personagem em um tabuleiro)
+
 -inimigos.c (inicaliza, cria, manipula, e limpa a memoria de uma lista encadeada de inmigos de um tabuleiro)
+
 -itens.c (inicaliza, cria, manipula, e limpa a memoria de uma lista de itens (ou poder ou pontos para o persoangem - ainda nao decide totalmente) de um tabuleiro
+
 
 
 BIBLOTECAS: correspondentes para cada classe exceto o main (personagem, inimigos, itens e tabuleiro possuem structs)
@@ -129,34 +135,37 @@ BIBLOTECAS: correspondentes para cada classe exceto o main (personagem, inimigos
 
 
 ARRUMAR E MELHORAR O CODIGO:
-/* ARRUMAR:
+
+ARRUMAR:
 - aleatoriedade dos itens e dos inimigos nao sobrescrever bordas e/ou caracteres   FEITO
 - mover os inimigos
 - // incrementar pontos a cada pontinho que passar
 - nao permitir ser muito pequene ou muito grande o tabuleiro (minmo 10)  * sera que fazer o usuario escolher entre tamanhos fixos? FEITO
 -- diminuir ou aumentar itens/inimigos conforme o tamanho do tabueliro
 - eliminar inimigo PROBLEMA
-*/
 
-/* MUDAR:
+
+MUDAR:
 - alterar manipulacao da lista encadeada (exemplo de como deveria ficar na ultima parte dessa classe)
 - transformar EM constante inimigos, tabuleiro, itens, personagem
 - fazer por partes cada metodo novo criado pelo main testar antes de continuar
 - arrumar as estruturas e chamados (nao precisar chamar nos parametros o tabuleiro) ou ficar chamando coisas desnecessaria e declara-las na sua propria classe
 
-*/
 
-/* EXTRAS:
+
+EXTRAS:
 - se comer o 'o' pode comer os inimigos por um determinado tempo regredindo gradativamento a vida do inimigo
 - se comer outro item ganha vida
 
-*/
 
 
 
 
-/* EXEMPLO DE LISTA ENCADEADA USADA AQUI:
+
+EXEMPLO DE LISTA ENCADEADA USADA AQUI:
+
 adicionando:
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -217,6 +226,3 @@ void remover_inimigo(int x, int y) {
         atual = atual->prox;
     }
 }
-
-
-*/
