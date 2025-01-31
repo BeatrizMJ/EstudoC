@@ -160,8 +160,8 @@ EXEMPLO DE LISTA ENCADEADA USADA AQUI:
 
 adicionando:
 
-#include <stdio.h>
-#include <stdlib.h>
+ #include <stdio.h>
+ #include <stdlib.h>
 
 typedef struct Inimigo {
     int x, y;
