@@ -1,0 +1,49 @@
+# depslib dependency file v1.0
+1738267021 source:c:\users\beatriz.moresco\documents\beatriz\codeblocks\etapa3-jogo\jogorpg\main.c
+	<stdio.h>
+	<stdlib.h>
+	"jogo.h"
+
+1738006659 c:\users\beatriz.moresco\documents\beatriz\codeblocks\etapa3-jogo\jogorpg\jogo.h
+	"tabuleiro.h"
+	"personagem.h"
+	"inimigos.h"
+	"itens.h"
+
+1738259537 source:c:\users\beatriz.moresco\documents\beatriz\codeblocks\etapa3-jogo\jogorpg\jogo.c
+	"jogo.h"
+	<stdlib.h>
+	<stdio.h>
+	<conio.h>
+
+1738266652 source:c:\users\beatriz.moresco\documents\beatriz\codeblocks\etapa3-jogo\jogorpg\inimigos.c
+	"inimigos.h"
+	<stdlib.h>
+	<stdio.h>
+	<time.h>
+
+1738266652 c:\users\beatriz.moresco\documents\beatriz\codeblocks\etapa3-jogo\jogorpg\inimigos.h
+
+1738089907 source:c:\users\beatriz.moresco\documents\beatriz\codeblocks\etapa3-jogo\jogorpg\itens.c
+	"itens.h"
+	<stdlib.h>
+	<stdio.h>
+	<time.h>
+
+1738088512 c:\users\beatriz.moresco\documents\beatriz\codeblocks\etapa3-jogo\jogorpg\itens.h
+
+1738266669 source:c:\users\beatriz.moresco\documents\beatriz\codeblocks\etapa3-jogo\jogorpg\personagem.c
+	"personagem.h"
+	<stdlib.h>
+	<stdio.h>
+
+1738176451 c:\users\beatriz.moresco\documents\beatriz\codeblocks\etapa3-jogo\jogorpg\personagem.h
+	"inimigos.h"
+
+1738079673 c:\users\beatriz.moresco\documents\beatriz\codeblocks\etapa3-jogo\jogorpg\tabuleiro.h
+
+1738086564 source:c:\users\beatriz.moresco\documents\beatriz\codeblocks\etapa3-jogo\jogorpg\tabuleiro.c
+	"tabuleiro.h"
+	<stdlib.h>
+	<stdio.h>
+
