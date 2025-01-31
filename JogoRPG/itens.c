@@ -3,6 +3,7 @@
 #include <stdio.h> //
 #include <time.h>
 
+// inicializacao de itens aqui e nao na classe jogo - arrumar
 
 void inicializar_item(Item **itens, int x, int y, int valor) {
 	Item *novo = (Item *)malloc(sizeof(Item));
