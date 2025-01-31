@@ -111,7 +111,9 @@ o Inclua a possibilidade de usar “poderes” que afetam os inimigos no tabulei
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ORGANIZACAO DO MEU CODIGO:
+
 CLASSES:
+
 -main.c (iniciar e chamar a classe jogo.c que chama todas as outras classe)
 -jogo.c (chama todas as outras classes (como um main)
 
@@ -119,6 +121,7 @@ CLASSES:
 -personagem.c (inicaliza, cria, manipula um personagem em um tabuleiro)
 -inimigos.c (inicaliza, cria, manipula, e limpa a memoria de uma lista encadeada de inmigos de um tabuleiro)
 -itens.c (inicaliza, cria, manipula, e limpa a memoria de uma lista de itens (ou poder ou pontos para o persoangem - ainda nao decide totalmente) de um tabuleiro
+
 
 BIBLOTECAS: correspondentes para cada classe exceto o main (personagem, inimigos, itens e tabuleiro possuem structs)
 
