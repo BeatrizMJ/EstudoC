@@ -197,7 +197,8 @@ void inicializar_inimigo(int x, int y) {
 
 remoção:
 
-void remover_inimigo(int x, int y) {
+    void remover_inimigo(int x, int y) {
+
     if (inimigos == NULL) return; // Lista vazia, nada para remover
 
     Inimigo *atual = inimigos;
