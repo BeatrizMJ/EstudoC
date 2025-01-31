@@ -79,7 +79,7 @@ void combate_PXI (Personagem *p, Inimigo *inimigos, char **tabuleiro) {
         if (current->vida <= 0) {
             printf("Inimigo eliminado!\n");
             remover_inimigo(inimigos, current);
-            //remover_inimiges(current);
+            //remover_inimigas(current);
             return;
         }
         current = current->prox;
