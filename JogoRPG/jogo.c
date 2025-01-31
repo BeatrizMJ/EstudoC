@@ -6,9 +6,9 @@
 
 void jogo() {
     int N, x, y, i;
-    char **tabuleiro, direcao; // tirar daqui e fazer em sua devida classe
-    Inimigo *inimigos;        // tirar daqui e fazer em sua devida classe
-    Item *itens = NULL;      // tirar daqui e fazer em sua devida classe
+    char **tabuleiro, direcao; // tirar daqui e fazer em sua devida classe e alterar para constante 
+    Inimigo *inimigos;        // tirar daqui e fazer em sua devida classe e alterar para constante 
+    Item *itens = NULL;      // tirar daqui e fazer em sua devida classe e alterar para constante 
     srand(time(NULL));
 
 
