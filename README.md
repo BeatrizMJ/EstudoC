@@ -191,7 +191,7 @@ adicionando:
             temp->prox = novo; // Adiciona no final
         }
     }
-}
+    }
 
 
 
