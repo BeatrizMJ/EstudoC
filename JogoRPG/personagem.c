@@ -4,7 +4,7 @@
 
 
 Personagem *criar_personagem(int x, int y, char **tabuleiro) {
-    Personagem *p = (Personagem *)malloc(sizeof(Personagem));
+    Personagem *p = (Personagem *)malloc(sizeof(Personagem)); // nao precisa de malloc paa personagem
     if (p) {
         p->x = x;
         p->y = y;
