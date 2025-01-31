@@ -16,21 +16,6 @@ void inicializar_inimigo(int x, int y) {
     }
 }
 
-/*
-    Inimigo *novo = (Inimigo *)malloc(sizeof(Inimigo));
-
-    if(inimigo == NULL) {
-        inimigo = novo;
-    } else {
-        while (inimigo != NULL) {
-            Inimigo *temp = inimigo;
-        }
-
-    }
-
-*/
-
-
 Inimigo *adicionar_inimigo(int x, int y, char **tabuleiro, int N) {
     int quantidade_inimigos = 5;
     for (int i = 0; i < quantidade_inimigos; i++) {
@@ -73,14 +58,14 @@ void remover_inimigo(Inimigo *inimigos, Inimigo *alvo) {
 
 
 /*
-void remover_inimiges(Inimigo *alvo)
+void remover_inimigas(Inimigo *alvo)
 {
     Inimigo *current = inimigos;
     Inimigo *toDelete = NULL;
 
     while(current != NULL){
         if(current == alvo){
-            //cabeça da lista
+            //cabeÃ§a da lista
             toDelete = current;
             current = current->prox;
         }else{
