@@ -160,18 +160,18 @@ EXEMPLO DE LISTA ENCADEADA USADA AQUI:
 
 adicionando:
 
- #include <stdio.h>
- #include <stdlib.h>
+    #include <stdio.h>
+    #include <stdlib.h>
 
-typedef struct Inimigo {
+    typedef struct Inimigo {
     int x, y;
     int vida;
     struct Inimigo *prox;
-} Inimigo;
+    } Inimigo;
 
-Inimigo *inimigos = NULL; // Lista encadeada inicializada vazia
+    Inimigo *inimigos = NULL; // Lista encadeada inicializada vazia
 
-void inicializar_inimigo(int x, int y) {
+    void inicializar_inimigo(int x, int y) {
     Inimigo *novo = (Inimigo *)malloc(sizeof(Inimigo));
     if (novo) {
         novo->x = x;
