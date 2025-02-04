@@ -115,34 +115,12 @@ bool combate(Inimigo *inimigos, char **tabuleiro) {
     if (atual->vida <= 0)
     {
         printf("Inimigo eliminado!\n");
-        remover_inimigo(atual, inimigos);
+        remover_inimigo(atual);
         return true;
     }
 
     return false;
 }
-
-void remover_inimigo(Inimigo *alvo, Inimigo *inimigos) {
-    Inimigo *anterior = NULL;
-    Inimigo *atual = inimigos;
-
-    while (atual) {
-        if (atual == alvo) { // encontrar o inimigo do combate
-            if (anterior) {
-                anterior->prox = atual->prox;
-            } else { // inimigo primeiro da lista
-                inimigos = atual->prox;
-            }
-            // atual = NULL;
-            free(atual);
-            return;
-        }
-        anterior = atual;
-        atual = atual->prox;
-    }
-}
-
-
 
 void liberar_memoria_personagem() {
     free(p);
