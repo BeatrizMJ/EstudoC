@@ -1,93 +1,150 @@
 #include "personagem.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <conio.h> // Captura de teclas.
+#include <stdbool.h>
 
+Personagem *p = NULL;
 
-Personagem *criar_personagem(int x, int y, char **tabuleiro) {
-    Personagem *p = (Personagem *)malloc(sizeof(Personagem)); // nao precisa de malloc paa personagem
-    if (p) {
+int criar_personagem(int x, int y, char **tabuleiro) {
+    p = malloc(sizeof(Personagem));
+    if (p == NULL) {
+       printf("Erro de alocação de memória do personagem\n");
+       return -1;
+    } else {
         p->x = x;
         p->y = y;
-        p->vida = 300;
+        p->vida = 100;
         p->pontos = 0;
         tabuleiro[x][y] = 'P';
     }
-    return p;
+    return 0; //
 }
 
-void mover_personagem(Personagem *p, char direcao, char **tabuleiro, int N, Inimigo *inimigos) {
-            static char ant = ' '; //
-            //tabuleiro[p->x][p->y] = ' ';
-            if(ant == '&'){
-                Inimigo *current = inimigos;
-                while(current != NULL){
-                    if(current->x == p->x && current->y == p->y){
-                        ant = '&';
-                        break;
-                    }else{
-                        ant = '.';
-                    }
-                    current = current->prox;
-                }
 
-            }
-	        tabuleiro[p->x][p->y] = ant;
-	        switch (direcao) {
-	            case 'w':
-	                if (p->x > 1) p->x--;
-	                break;
-	            case 's':
-	                if (p->x < N - 2) p->x++;
-	                break;
-	            case 'a':
-	                if (p->y > 1) p->y--;
-	                break;
-	            case 'd':
-	                if (p->y < N - 2) p->y++;
-	                break;
-	            case 'e':
-	                printf("Jogo finalizado.\n");
-	                return;
-	            default:
-	                printf("Tecla invalida.\n");
-	                break;
-	        }
-
-
-	        ant = (tabuleiro[p->x][p->y] == '.') ? ' ' : tabuleiro[p->x][p->y];
-
-	        tabuleiro[p->x][p->y] = 'P';
-
-	        combate_PXI(p, inimigos, tabuleiro);
-}
-
-void combate_PXI (Personagem *p, Inimigo *inimigos, char **tabuleiro) {
-
-    Inimigo *current = inimigos;
-    while(current != NULL)
-    {
-        if (p->x == current->x && p->y == current->y) {
-            p->vida -= 10;
-            current->vida -= 20;
-            printf("Combate! Vida: personagem %d e inimigo %d.\n", p->vida, current->vida);
+char direcao;
+void teclado_personagem(int N, char **tabuleiro, Inimigo *inimigos) {
+    while (1) {
+       if (kbhit()) {
+        system("cls");
+        direcao = getch();
+        mover_personagem(N, tabuleiro, inimigos);
+        imprimir_tabuleiro(N);
         }
-
-        if (p->vida <= 0) {
-            printf("Voce Perdeu! Jogo finalizado.\n");
-        }
-
-        if (current->vida <= 0) {
-            printf("Inimigo eliminado!\n");
-            remover_inimigo(inimigos, current);
-            //remover_inimigas(current);
-            return;
-        }
-        current = current->prox;
     }
 }
 
 
-void liberar_memoria_personagem(Personagem *p) {
-	free(p);
-	p = NULL;
+void mover_personagem(int N, char **tabuleiro, Inimigo *inimigos) {
+
+    int xNovo = p->x;
+    int yNovo = p->y;
+
+    switch (direcao)
+    {
+    case 'w':
+        if (xNovo > 1) xNovo--;
+        break;
+    case 's':
+        if (xNovo < N - 2) xNovo++;
+        break;
+    case 'a':
+        if (yNovo > 1) yNovo--;
+        break;
+    case 'd':
+        if (yNovo < N - 2) yNovo++;
+        break;
+    case 'e':
+        printf("Jogo finalizado.\n");
+        return;
+    default:
+        printf("Tecla invalida.\n");
+        break;
+    }
+
+    Inimigo *atual = inimigos; // Começa pelo primeiro inimigo
+    if (atual == NULL) {
+        printf("Nenhum inimigo na lista.\n");
+        return;
+    }
+
+    printf("Lista de Inimigos:\n");
+    while (atual != NULL) {
+        printf("Inimigo em (x: %d, y: %d), Vida: %d\n", atual->x, atual->y, atual->vida);
+        atual = atual->prox; // Avança para o próximo inimigo
+    }
+
+
+    bool venceu = false;
+    bool encontrouInimigo = false;
+    Inimigo *temp = inimigos;
+    while (temp != NULL) {
+        if (xNovo == temp->x && yNovo == temp->y) {
+            encontrouInimigo = true;
+            printf("Combate! ");
+            venceu = combate(temp, tabuleiro);
+            //todo: sair do while caso o p ganhe
+        }
+
+        temp = temp->prox;  // Avança para o próximo inimigo na lista
+    }
+
+    if ((encontrouInimigo && venceu) || !encontrouInimigo){
+        tabuleiro[p->x][p->y] = ' ';
+        tabuleiro[xNovo][yNovo] = 'P';
+        p->x = xNovo;
+        p->y = yNovo;
+    }
+}
+
+
+bool combate(Inimigo *inimigos, char **tabuleiro) {
+    Inimigo *atual = inimigos;
+
+    p->vida -= 10;
+    atual->vida -= 20;
+    printf("Vida: personagem %d e inimigo %d.\n", p->vida, atual->vida);
+
+    if (p->vida <= 0)
+    {
+        printf("Voce Perdeu! Jogo finalizado.\n");
+        exit(0);
+        //return false;
+    }
+
+    if (atual->vida <= 0)
+    {
+        printf("Inimigo eliminado!\n");
+        remover_inimigo(atual, inimigos);
+        return true;
+    }
+
+    return false;
+}
+
+void remover_inimigo(Inimigo *alvo, Inimigo *inimigos) {
+    Inimigo *anterior = NULL;
+    Inimigo *atual = inimigos;
+
+    while (atual) {
+        if (atual == alvo) { // encontrar o inimigo do combate
+            if (anterior) {
+                anterior->prox = atual->prox;
+            } else { // inimigo primeiro da lista
+                inimigos = atual->prox;
+            }
+            // atual = NULL;
+            free(atual);
+            return;
+        }
+        anterior = atual;
+        atual = atual->prox;
+    }
+}
+
+
+
+void liberar_memoria_personagem() {
+    free(p);
+    p = NULL;
 }
