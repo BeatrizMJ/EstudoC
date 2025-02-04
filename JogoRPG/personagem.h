@@ -1,17 +1,19 @@
 #ifndef PERSONAGEM_H
 #define PERSONAGEM_H
-
 #include "inimigos.h"
+#include <stdbool.h>
 
 typedef struct {
-    int x, y;
+    int x;
+    int y;
     int vida;
     int pontos;
 } Personagem;
 
-Personagem *criar_personagem(int x, int y, char **tabuleiro);
-void mover_personagem(Personagem *p, char direcao, char **tabuleiro, int N, Inimigo *inimigos);
-void combate_PXI(Personagem *p, Inimigo *inimigos, char** tabuleiro);
-void liberar_memoria_personagem(Personagem *p);
+int criar_personagem(int x, int y, char **tabuleiro);
+void teclado_personagem (int N, char **tabuleiro, Inimigo *inimigos);
+void mover_personagem(int N, char **tabuleiro, Inimigo *inimigos);
+bool combate(Inimigo *inimigos, char **tabuleiro);
+void liberar_memoria_personagem();
 
 #endif
