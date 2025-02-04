@@ -1,45 +1,34 @@
 #include "jogo.h"
 #include <stdlib.h>
 #include <stdio.h>
-#include <conio.h> // Captura de teclas.
-
+#include "inimigos.h"
 
 void jogo() {
-    int N, x, y, i;
-    char **tabuleiro, direcao; // tirar daqui e fazer em sua devida classe e alterar para constante 
-    Inimigo *inimigos;        // tirar daqui e fazer em sua devida classe e alterar para constante 
-    Item *itens = NULL;      // tirar daqui e fazer em sua devida classe e alterar para constante 
-    srand(time(NULL));
-
+    int N, x, y;
 
     do {
         printf("Digite o tamanho do tabuleiro (N x N): \n");
-        printf("(Observacao: apenas N entre 6 a 50)\n");
+        printf("(Observacao: apenas N entre 10 a 40)\n");
         scanf("%d", &N);
-    } while(N < 6 || N > 50);
+    } while(N < 10 || N > 40);
 
-    tabuleiro = inicializar_tabuleiro(N);
-    Personagem *p = criar_personagem(1, 1, tabuleiro);
-    inimigos = adicionar_inimigo(x, y, tabuleiro, N);
-    adicionar_item(&itens, x, y, tabuleiro, N);
+    char **tabuleiro = inicializar_tabuleiro(N);
+    criar_personagem(1, 1, tabuleiro);
 
-    imprimir_tabuleiro(N, tabuleiro);
+    Inimigo *inimigos = criar_inimigo(x, y, tabuleiro, N);
 
-    while (1) {
-        if (kbhit()) {
-            system("cls");
-            direcao = getch();
-            mover_personagem(p, direcao, tabuleiro, N, inimigos);
-            imprimir_tabuleiro(N, tabuleiro);
-        }
-    }
+    //adicionar_item(&itens, x, y, tabuleiro, N);
 
-    liberar_memoria(tabuleiro, N, inimigos, itens, p);
+    imprimir_tabuleiro(N);
+    teclado_personagem(N, tabuleiro, inimigos);
+
+
+    liberar_memoria(N);
 }
 
-void liberar_memoria(char **tabuleiro, int N, Inimigo *inimigos, Item *itens, Personagem *p) {
-    liberar_memoria_tabuleiro(tabuleiro, N);
-    liberar_memoria_inimigos(inimigos);
-    liberar_memoria_itens(itens);
-    liberar_memoria_personagem(p);
+void liberar_memoria(int N) {
+    liberar_memoria_tabuleiro(N);
+    liberar_memoria_personagem();
+    liberar_memoria_inimigos();
+    //liberar_memoria_itens();
 }
